@@ -1,0 +1,17 @@
+name: Feature proposal
+description: Explain the user problem and a focused improvement.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Who needs this, and what is difficult today?
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: What would a successful improvement do?
+      description: Include any alternatives or constraints that matter.
+    validations:
+      required: true
