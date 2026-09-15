@@ -195,10 +195,13 @@ SEC3 = [
       "After human review, the cooperative signs this bundle as a **W3C Verifiable Credential "
       "2.0**{r:vc20} — the *Plot Passport*. Three properties make it more than a database row:", after=60),
     BULLETS([
-        "**Portable.** The passport is a signed credential held for the farmer — not locked in "
-        "our database. If the farmer changes buyer or platform, or if TandaTani itself "
-        "disappears, the proof stays valid and verifiable. No incumbent offers this; their "
-        "records live in the paying client’s silo.{r:koltiva}",
+        "**Portable.** The passport downloads as a self-contained signed file — the credential, "
+        "its evidence hashes and its Merkle proof, plus a printable QR card — **held by the "
+        "farmer** on their own device, with cooperative custody as the fallback, never locked "
+        "in our database. Verifying it needs only that file and the public chain: if the "
+        "farmer changes buyer or platform, or if TandaTani itself disappears, the proof still "
+        "verifies. None of the major incumbents offers this; their records live in the paying "
+        "client’s silo.{r:koltiva}",
         "**Independently verifiable.** Each bundle’s SHA-256 hash is batched into a Merkle tree "
         "whose root is anchored on the Polygon public chain.{r:polygon_gas} Any importer or "
         "auditor can re-compute the hash in a browser and confirm the record existed, unaltered, "
@@ -405,7 +408,7 @@ SEC5 = [
              "rubber (2.1 M); exports at stake up to US$7 B{r:pwc7b}",
              "≈7.5 M farms · US$7 B trade"],
             ["SOM — 12-month beachhead: Gayo coffee",
-             "3 co-ops · 8,000 members × €1.40 × 2 harvest seasons + 2 exporters · 200 dossiers × €45 ≈ €31k",
+             "(8,000 members × €1.40 × 2 seasons) + (200 dossiers × €45) ≈ €31k, across 3 co-ops and 2 exporters",
              "≈US$33k ARR"],
         ],
         [2280, 4300, 1729], size=18,
@@ -417,7 +420,7 @@ SEC5 = [
         "**Exporters: Rp 800k (≈ €45) per due-diligence dossier**, or a flat coop-season "
         "license. Context: consultants run €800–1,500/day, enterprise SaaS €10k–50k/yr;{r:consult} "
         "one compliant 19-tonne container carries ≈ US$950 of premium at "
-        "+US$50/tonne.{r:premium} We price under 5% of the value we unlock.",
+        "+US$50/tonne.{r:premium} We price at ≈5% of the value we unlock.",
         "**Cooperatives: Rp 25k (≈ €1.40) per member per season** for the credential registry "
         "and Fairtrade/e-STDB exports — less than 1% of a certification’s per-farmer "
         "cost;{r:rspo_cost} a member visit takes minutes, and one visit now serves EUDR, "
@@ -480,13 +483,10 @@ SEC6 = [
     P("One hybrid system, three planes: a **Web2 core** for speed and cost, a **Web3 trust "
       "plane** for proof and portability, an **AI plane** for verification at smallholder "
       "prices. Every component is free-tier; the whole demo runs on public URLs.", after=100),
-    IMG(os.path.join(SCRATCH, "diagram_arch.png"), width_dxa=DXA_BODY + 720, indent=0),
-    CAPTION("Figure 1 — TandaTani system architecture and data flow. Numbered chips on the arrows match the data-flow steps in §6.1."),
-
-    SUBHEAD("6.1  Data flow (follows the diagram’s numbering)"),
+    SUBHEAD("6.1  Data flow (the numbered steps match the chips in Figure 1, next page)"),
     NUMLIST([
         "Field capture, fully offline: GPS point/polygon, photos, farmer identity → IndexedDB queue.",
-        "Sync to the API (Next.js route handlers, Zod-validated); plots land in Postgres/PostGIS,{r:supabase} where the ST_Intersects integrity gate rejects duplicate and overlapping claims on arrival.",
+        "Sync to the API (Next.js route handlers, Zod-validated); plots land in Postgres/PostGIS,{r:supabase} where the ST_Intersects gate blocks exact-duplicate claims outright and flags partial overlaps into the risk score.",
         "AI engine gathers satellite evidence (Whisp primary; GFW independent track){r:whisp,gfw} and Gemini writes the Bahasa verdict.{r:gemini}",
         "Cooperative reviews the AI-annotated queue in its Console.",
         "Approved bundle → W3C Verifiable Credential 2.0, signed with the cooperative’s did:key (Ed25519).{r:vc20}",
@@ -495,6 +495,9 @@ SEC6 = [
         "Exporter composes verified passports → TRACES GeoJSON + evidence-PDF dossier.{r:traces}",
         "Anyone scans the QR: the browser re-computes the hash and checks VC signature + Merkle proof against the chain.",
     ]),
+    PAGEBREAK(),
+    IMG(os.path.join(SCRATCH, "diagram_arch_rot.png"), width_dxa=7430, indent=800),
+    CAPTION("Figure 1 — TandaTani system architecture and data flow (rotate to read). Numbered chips on the arrows match the data-flow steps in §6.1."),
     SPACER(40),
 
     SUBHEAD("6.2  Technology choices — and why each earns its place"),
@@ -559,19 +562,19 @@ CONTENT = {
         ("[e.g., High School Student / College Student]", "College Student", {}),
         ("[name@email.com]", "shivam1720406@gmail.com", {}),
         ("[e.g., Indonesia / Other Country]", "India", {}),
-        ("[Enter Institution Name]", "‹institution — fill before export›", {}),
+        ("[Enter Institution Name]", "‹leader: institution›", {}),
         # Member 1
-        ("[Enter Name]", "‹member 2 name›", {}),
+        ("[Enter Name]", "‹Member 1: full name›", {}),
         ("[e.g., High School Student / College Student]", "College Student", {}),
-        ("[name@email.com]", "‹member 2 email›", {}),
-        ("[e.g., Indonesia / Other Country]", "‹member 2 country›", {}),
-        ("[Enter Institution Name]", "‹member 2 institution›", {}),
+        ("[name@email.com]", "‹Member 1: email›", {}),
+        ("[e.g., Indonesia / Other Country]", "‹Member 1: country›", {}),
+        ("[Enter Institution Name]", "‹Member 1: institution›", {}),
         # Member 2
-        ("[Enter Name]", "‹member 3 name›", {}),
+        ("[Enter Name]", "‹Member 2: full name›", {}),
         ("[e.g., High School Student / College Student]", "College Student", {}),
-        ("[name@email.com]", "‹member 3 email›", {}),
-        ("[e.g., Indonesia / Other Country]", "‹member 3 country›", {}),
-        ("[Enter Institution Name]", "‹member 3 institution›", {}),
+        ("[name@email.com]", "‹Member 2: email›", {}),
+        ("[e.g., Indonesia / Other Country]", "‹Member 2: country›", {}),
+        ("[Enter Institution Name]", "‹Member 2: institution›", {}),
     ],
     "sections": [
         ("Executive Summary", SEC1),

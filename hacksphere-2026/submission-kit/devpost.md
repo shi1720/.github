@@ -91,7 +91,7 @@ verifiable-credentials, did, gemini, fao-whisp, global-forest-watch, vercel, tai
 | 4 | Every member joined the **Compsphere Discord** and renamed to `ROOT ACCESS - <Name>` (e.g., `ROOT ACCESS - Shivam Gupta`) | ☐ |
 | 5 | Every member posted the official **Twibbon on Instagram**; copy one post's link for the submission | ☐ |
 | 6 | Personal-info table in the PDF completed for all 3 members (names, emails, countries, institutions) — regenerate via `content.py` → `build.py` | ☐ |
-| 7 | PDF < 10 MB (current build: ~0.8 MB ✓), opens correctly, hyperlinks work | ☐ |
+| 7 | PDF < 10 MB (current build: ~1.0 MB ✓), opens correctly, hyperlinks work | ☐ |
 | 8 | Project created on Devpost, all 3 members invited via **Manage Team** | ☐ |
 | 9 | Elevator pitch + project details filled (they'll be public during Oct 1–10 voting) | ☐ |
 | 10 | **Submit** before Sep 18, 23:59 WIB — the portal locks exactly then; aim for Sep 17 | ☐ |

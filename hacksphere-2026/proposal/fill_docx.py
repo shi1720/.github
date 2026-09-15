@@ -169,7 +169,7 @@ def TABLE(rows, widths, *, indent=720, header_fill=ACCENT_TEAL, size=20,
             w = widths[c] if not span else sum(widths[c:c+span])
             cells.append(_cell(val, w, fill=fill, bold=bold, size=sz, align=alg,
                                color=colr, span=span))
-        xml.append(f'<w:tr>{"".join(cells)}</w:tr>')
+        xml.append(f'<w:tr><w:trPr><w:cantSplit w:val="1"/></w:trPr>{"".join(cells)}</w:tr>')
     xml.append('</w:tbl>')
     # A table directly followed by a table/end needs a spacer paragraph after.
     return "".join(xml) + SPACER(40)
