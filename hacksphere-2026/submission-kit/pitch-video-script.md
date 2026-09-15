@@ -53,7 +53,7 @@ remote member does §3 (architecture), Shivam closes §4–5 (business + ask).
 ### 1. The wall *(45 s)*
 
 > Judges — before this pitch ends, the EU will have imported about forty tonnes of Indonesian
-> coffee. In **[X] days** — December 30th — every one of those bags needs plot-level GPS proof
+> coffee. In **eighty days** — December 30th — every one of those bags needs plot-level GPS proof
 > that it grew on land untouched since 2020. Ninety-nine percent of our coffee comes from
 > smallholders. Their registration coverage is zero point zero three percent. That's not a
 > compliance gap. That's a wall — between one point six million families and a seven-billion-
