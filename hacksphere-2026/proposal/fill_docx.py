@@ -216,11 +216,11 @@ def STATBAND(items, *, indent=720, width=DXA_BODY):
         lab_props = f'<w:sz w:val="17"/><w:szCs w:val="17"/><w:color w:val="4a4a4a"/>'
         tops.append(
             f'<w:tc><w:tcPr><w:tcW w:w="{w}" w:type="dxa"/>'
-            f'<w:shd w:fill="f2fafb" w:val="clear"/>'
             f'<w:tcBorders><w:top w:color="33c1cc" w:sz="18" w:space="0" w:val="single"/>'
             f'<w:left w:color="ffffff" w:sz="24" w:space="0" w:val="single"/>'
-            f'<w:right w:color="ffffff" w:sz="24" w:space="0" w:val="single"/>'
-            f'<w:bottom w:val="nil"/></w:tcBorders>'
+            f'<w:bottom w:val="nil"/>'
+            f'<w:right w:color="ffffff" w:sz="24" w:space="0" w:val="single"/></w:tcBorders>'
+            f'<w:shd w:fill="f2fafb" w:val="clear"/>'
             f'<w:tcMar><w:top w:w="120" w:type="dxa"/><w:left w:w="80" w:type="dxa"/>'
             f'<w:bottom w:w="20" w:type="dxa"/><w:right w:w="80" w:type="dxa"/></w:tcMar>'
             f'<w:vAlign w:val="center"/></w:tcPr>'
@@ -229,11 +229,11 @@ def STATBAND(items, *, indent=720, width=DXA_BODY):
             f'{_runs(str(big), big_props)}</w:p></w:tc>')
         bots.append(
             f'<w:tc><w:tcPr><w:tcW w:w="{w}" w:type="dxa"/>'
-            f'<w:shd w:fill="f2fafb" w:val="clear"/>'
             f'<w:tcBorders><w:top w:val="nil"/>'
             f'<w:left w:color="ffffff" w:sz="24" w:space="0" w:val="single"/>'
-            f'<w:right w:color="ffffff" w:sz="24" w:space="0" w:val="single"/>'
-            f'<w:bottom w:color="ffffff" w:sz="4" w:space="0" w:val="single"/></w:tcBorders>'
+            f'<w:bottom w:color="ffffff" w:sz="4" w:space="0" w:val="single"/>'
+            f'<w:right w:color="ffffff" w:sz="24" w:space="0" w:val="single"/></w:tcBorders>'
+            f'<w:shd w:fill="f2fafb" w:val="clear"/>'
             f'<w:tcMar><w:top w:w="20" w:type="dxa"/><w:left w:w="80" w:type="dxa"/>'
             f'<w:bottom w:w="120" w:type="dxa"/><w:right w:w="80" w:type="dxa"/></w:tcMar>'
             f'<w:vAlign w:val="center"/></w:tcPr>'
@@ -293,11 +293,23 @@ def PAGEBREAK():
 
 # ------------------------------------------------------------------- engine
 def build(content, out_docx):
-    global LINKS, IMAGES, _IMG_COUNT
-    LINKS = _Links(); IMAGES = []; _IMG_COUNT[0] = 0
     if os.path.exists(BUILD):
         shutil.rmtree(BUILD)
     shutil.copytree(TPL, BUILD)
+    # Pre-apply the Word "washout" the template intends for its watermark:
+    # LibreOffice misrenders VML gain/blacklevel, drawing a gray box + harsh
+    # lines. Bake a 15% ghost into the image and strip the VML attributes.
+    from PIL import Image as _Img
+    _p = f"{BUILD}/word/media/image3.png"
+    _im = _Img.open(_p).convert("RGB")
+    _im = _Img.blend(_Img.new("RGB", _im.size, (255, 255, 255)), _im, 0.15)
+    _im.save(_p)
+    _hp = f"{BUILD}/word/header1.xml"
+    _hx = open(_hp).read()
+    _hx = _hx.replace(' blacklevel="22938f"', '').replace(' gain="19661f"', '')
+    _hx = _hx.replace('<v:shape id="WordPictureWatermark1" ',
+                      '<v:shape id="WordPictureWatermark1" stroked="f" filled="f" ')
+    open(_hp, "w").write(_hx)
     doc = open(f"{BUILD}/word/document.xml").read()
 
     # 1. identity cells --------------------------------------------------
@@ -342,6 +354,7 @@ def build(content, out_docx):
     if content.get("appendix"):
         i = doc.find("<w:sectPr")
         doc = doc[:i] + "".join(content["appendix"]) + doc[i:]
+    doc = doc.replace('<w:pgMar ', '<w:pgMar w:gutter="0" ') if 'w:gutter' not in doc else doc
 
     # 4. relationships (links + images) ----------------------------------
     rels_path = f"{BUILD}/word/_rels/document.xml.rels"
