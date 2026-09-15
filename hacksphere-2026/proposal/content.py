@@ -65,23 +65,26 @@ def NUMLIST(items, start=1, size=21, indent=1080):
 SEC1 = [
     P("**TANDATANI** (from Bahasa Indonesia *tanda* “mark” + *tani* “farmer” — an echo of *tanda "
       "tangan*, a signature) gives every smallholder plot a **cryptographically verifiable Plot "
-      "Passport**, so Indonesia’s 1.6 million coffee-farming families{r:fftc} — and after them "
-      "the palm, cocoa and rubber smallholders behind up to **US$7 billion** of exports{r:pwc7b} "
-      "— are not locked out of Europe when the EU Deforestation Regulation takes effect on "
-      "**30 December 2026**.{r:eudr,eudr_delay} Today, e-STDB — the government registration that "
-      "doubles as a farmer’s geolocation record — covers just **0.03% of coffee farmers**;{r:estdb} "
-      "TandaTani closes that gap at the price of a WhatsApp message. A cooperative officer maps a "
-      "plot in minutes on a **Bahasa-first, offline-capable app**; an **AI engine** cross-examines "
-      "it against official satellite forest data (FAO Whisp, JRC-2020 baseline, GLAD/RADD "
-      "alerts){r:whisp,gfw} and explains its verdict in plain Bahasa; the cooperative signs a **W3C "
-      "Verifiable Credential**{r:vc20} that the farmer owns and can carry to *any* buyer, its "
-      "evidence hash **anchored on the Polygon public chain** (≈ $0.001 per thousand "
-      "plots{r:polygon_gas}). Exporters click once for an **EU-ready due-diligence dossier** "
-      "(TRACES GeoJSON){r:traces}, and anyone can scan a QR to verify the whole chain of proof — "
-      "no account, no permission, no trust in us required. Farmers pay nothing; exporters pay per "
-      "shipment — two orders of magnitude below today’s €800-per-day consultants{r:consult} — for "
-      "compliance that unlocks a documented **+US$50/tonne premium**.{r:premium} Hybrid Web2 + "
-      "Web3 + AI, every component free-tier, and every feature scoped to run **live, end-to-end, "
+      "Passport that the farmer owns**, so Indonesia’s 1.6 million coffee-farming "
+      "families{r:fftc} — and after them the palm, cocoa and rubber smallholders behind up to "
+      "**US$7 billion** of exports{r:pwc7b} — are not locked out of Europe when the EU "
+      "Deforestation Regulation takes effect on **30 December 2026**.{r:eudr,eudr_delay} The "
+      "registration that doubles as a farmer’s geolocation record, e-STDB, covers just **0.03% "
+      "of coffee farmers** today;{r:estdb} TandaTani closes that gap at the price of a WhatsApp "
+      "message.", after=110),
+    P("A cooperative officer maps a plot in minutes on a **Bahasa-first, offline-capable app**; "
+      "an **AI engine** cross-examines it against official satellite forest data (FAO Whisp, "
+      "JRC-2020 baseline, GLAD/RADD alerts){r:whisp,gfw} and explains its verdict in plain "
+      "Bahasa; the cooperative then signs a **W3C Verifiable Credential**{r:vc20} the farmer "
+      "keeps and can carry to *any* buyer, its evidence hash **anchored on the Polygon public "
+      "chain** (≈ $0.001 per thousand plots{r:polygon_gas}). Exporters click once for an "
+      "**EU-ready due-diligence dossier** (TRACES GeoJSON){r:traces} — and **anyone, including "
+      "the judges reading this, can scan a QR and verify the entire chain of proof with no "
+      "account, no permission, and no trust in us.**", after=110),
+    P("Farmers pay nothing; exporters pay per shipment — two orders of magnitude below today’s "
+      "€800-per-day consultants{r:consult} — for compliance that carries a documented "
+      "**+US$50/tonne premium** (Vietnamese-robusta benchmark).{r:premium} Hybrid Web2 + Web3 + "
+      "AI, every component free-tier, and every feature scoped to run **live, end-to-end, "
       "within the 24-hour final**.", after=160),
 ]
 
@@ -179,7 +182,10 @@ SEC2 = [
 SEC3 = [
     P("Indonesia’s harvest is real, the land is clean, but the evidence lives in paper folders, "
       "WhatsApp photos and enterprise databases the farmer will never control. TandaTani’s "
-      "answer: give the proof itself to the person who created it.", after=100),
+      "answer: give the proof itself to the person who created it. Every ingredient we use "
+      "exists; the **combination** — a compliance credential the *farmer* owns, priced *per "
+      "shipment*, verifiable by *anyone* without an account — exists nowhere in production, and "
+      "§3.5 shows why incumbents cannot copy it without breaking their own business model.", after=100),
 
     SUBHEAD("3.1  The core concept — a Plot Passport, owned by the farmer"),
     P("For every plot we assemble one **evidence bundle**: geolocation (a GPS point for plots "
@@ -201,6 +207,13 @@ SEC3 = [
         "as the regulation requires.{r:eudr}",
     ]),
 
+    P("**Scope honesty — the legality pillar.** EUDR demands two proofs: deforestation-free "
+      "*and* legal production. TandaTani verifies the first from satellites; for the second it "
+      "structures and hash-seals the farmer’s legality evidence (e-STDB, land letters, "
+      "cooperative membership), checks it for presence and internal consistency, and records "
+      "who attested it — while authenticity verification remains with the issuing authorities. "
+      "The dossier is evidence the exporter files under its own due-diligence responsibility; "
+      "we do not replace that duty — we make it affordable to discharge.", after=120),
     SUBHEAD("3.2  How it works — one journey"),
     P("Ibu Sari, a field officer of a Gayo cooperative, visits member farms with a mid-range "
       "Android. At Pak Karim’s plot she opens **Ladang**, our farmer app: one tap for the GPS "
@@ -213,8 +226,8 @@ SEC3 = [
       "key signs Pak Karim’s Plot Passport. When an exporter builds its next container for "
       "Hamburg, it selects verified passports and TandaTani emits the TRACES-format GeoJSON "
       "dossier{r:traces} plus a QR-coded evidence certificate. The importer scans the QR: hash "
-      "matches, signature valid, root on-chain — due diligence, defensible in an audit five "
-      "years later.", after=100),
+      "matches, signature valid, root on-chain — due diligence the importer can re-verify, "
+      "byte for byte, five years from now.", after=100),
 
     SUBHEAD("3.3  Why Web3 — an honest answer, not a buzzword"),
     BULLETS([
@@ -325,11 +338,11 @@ SEC4 = [
     SUBHEAD("The 24-hour execution plan (3 builders × 24 h)"),
     TABLE(
         [
-            ["Window (WIB)", "Member A — Frontend / PWA", "Member B — Backend / AI", "Member C — Web3 / Infra"],
-            ["10:00–14:00", "App shell; map capture; offline queue", "Supabase schema + PostGIS; API skeleton", "Repo/CI; Vercel + Supabase; deploy TandaRegistry.sol to Amoy"],
-            ["14:00–19:00", "Farmer flows; verification result UI", "Whisp + GFW integration; risk scorer", "VC issuance service (did:key, Ed25519)"],
-            ["19:00–00:00", "Cooperative Console", "Gemini Bahasa verdicts; Tanya Tani", "Merkle batcher + anchoring worker"],
-            ["00:00–05:00", "Exporter DDS Studio", "TRACES GeoJSON + PDF dossier generator", "Public verify page (hash + proof in browser)"],
+            ["Window (WIB)", "Builder 1 (S. Gupta) — Web3 / Infra", "Builder 2 — Frontend / PWA", "Builder 3 — Backend / AI"],
+            ["10:00–14:00", "Repo/CI; Vercel + Supabase; deploy TandaRegistry.sol to Amoy", "App shell; map capture; offline queue", "Supabase schema + PostGIS; API skeleton"],
+            ["14:00–19:00", "VC issuance service (did:key, Ed25519)", "Farmer flows; verification result UI", "Whisp + GFW integration; risk scorer"],
+            ["19:00–00:00", "Merkle batcher + anchoring worker", "Cooperative Console", "Gemini Bahasa verdicts; Tanya Tani"],
+            ["00:00–05:00", "Public verify page (hash + proof in browser)", "Exporter DDS Studio", "TRACES GeoJSON + PDF dossier generator"],
             ["05:00–08:00", ("Integration pass, all hands — seeded Gayo demo dataset, airplane-mode drill, cross-device tests", {"span": 3, "align": "left"})],
             ["08:00–10:00", ("Hardening, deploy freeze, pitch rehearsal ×3, Q&A drill", {"span": 3, "align": "left"})],
         ],
@@ -378,8 +391,8 @@ SEC5 = [
              "rubber (2.1 M); exports at stake up to US$7 B{r:pwc7b}",
              "≈7.5 M farms · US$7 B trade"],
             ["SOM — 12-month beachhead: Gayo coffee",
-             "3 cooperatives · ≈8,000 member plots · 2 exporters · ≈200 EU-bound containers",
-             "≈US$60–90k ARR"],
+             "3 co-ops · 8,000 members × €1.40 × 2 harvest seasons + 2 exporters · 200 dossiers × €45 ≈ €31k",
+             "≈US$33k ARR"],
         ],
         [2280, 4300, 1729], size=18,
     ),
@@ -453,17 +466,17 @@ SEC6 = [
       "plane** for proof and portability, an **AI plane** for verification at smallholder "
       "prices. Every component is free-tier; the whole demo runs on public URLs.", after=100),
     IMG(os.path.join(SCRATCH, "diagram_arch.png"), width_dxa=DXA_BODY + 720, indent=0),
-    CAPTION("Figure 1 — TandaTani system architecture and data flow. Numbered chips ①–⑨ match §6.1."),
+    CAPTION("Figure 1 — TandaTani system architecture and data flow. Numbered chips on the arrows match the data-flow steps in §6.1."),
 
     SUBHEAD("6.1  Data flow (follows the diagram’s numbering)"),
     NUMLIST([
         "Field capture, fully offline: GPS point/polygon, photos, farmer identity → IndexedDB queue.",
-        "Sync to the API (Next.js route handlers, Zod-validated); plots land in Postgres/PostGIS.{r:supabase}",
-        "PostGIS integrity gate: ST_Intersects rejects duplicate and overlapping claims on arrival.",
+        "Sync to the API (Next.js route handlers, Zod-validated); plots land in Postgres/PostGIS,{r:supabase} where the ST_Intersects integrity gate rejects duplicate and overlapping claims on arrival.",
+        "AI engine gathers satellite evidence (Whisp primary; GFW independent track){r:whisp,gfw} and Gemini writes the Bahasa verdict.{r:gemini}",
         "Cooperative reviews the AI-annotated queue in its Console.",
         "Approved bundle → W3C Verifiable Credential 2.0, signed with the cooperative’s did:key (Ed25519).{r:vc20}",
-        "AI engine gathers satellite evidence (Whisp primary; GFW independent track){r:whisp,gfw} and Gemini writes the Bahasa verdict.{r:gemini}",
-        "Bundle hashes batch into a Merkle root, anchored by TandaRegistry.sol on Polygon.{r:polygon_gas}",
+        "Bundle hashes batch into a Merkle tree — thousands of plots, one 32-byte root.",
+        "The root is anchored by TandaRegistry.sol on Polygon; the event is public forever.{r:polygon_gas}",
         "Exporter composes verified passports → TRACES GeoJSON + evidence-PDF dossier.{r:traces}",
         "Anyone scans the QR: the browser re-computes the hash and checks VC signature + Merkle proof against the chain.",
     ]),
