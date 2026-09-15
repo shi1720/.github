@@ -103,21 +103,41 @@ remote member does §3 (architecture), Shivam closes §4–5 (business + ask).
 
 ---
 
-### Q&A crib — the five answers to know cold
+### Q&A crib — the nine answers to know cold
+(Full 12-question adversarial dossier: `judge-reviews/adversarial_qa.md`.)
 
-1. **"Why blockchain, not a database?"** — Three reasons: EUDR's 5-year record duty must survive
-   any startup's death; an importer 10,000 km away must verify without trusting the vendor; and
-   farmer credentials must stay valid if the farmer — or we — leave. A private database delivers
-   none of the three.
-2. **"How do you know the coffee in the bag came from that plot?"** — The passport certifies the
-   plot and its capacity; harvest events are logged against it and anomaly-checked (volumes vs.
-   plot capacity, PostGIS overlaps). Full physical chain-of-custody is roadmap — we say so; DDS
-   liability stays with the exporter, and we make their evidence honest.
+1. **"Why blockchain, not a database?"** — A signature proves *who* wrote a record; the public
+   anchor proves *when* — no issuer can backdate a passport after a deforestation alert lands.
+   Add EUDR's 5-year record duty (must survive any startup's death) and strangers verifying
+   without trusting the vendor: a private database delivers none of the three.
+2. **"The passport proves the plot — what proves the bag?"** — Honestly: nothing fully, and no
+   remote system can. What we do: the Studio's volume-plausibility gate blocks any dossier whose
+   tonnage exceeds its passports' summed harvest estimates — the launderer's math stops working;
+   claims are exclusive (no overlapping plots) and signed, so fraud is attributable. Physical
+   custody (bagging events, lot QR) is season-two roadmap, stated as such.
 3. **"What if Whisp is down during your demo?"** — Two independent evidence tracks (Whisp + GFW);
-   either alone yields a verdict. If the venue Wi-Fi dies, the offline-first design *is* the
-   contingency.
-4. **"Koltiva has 1.9M farmers. Why you?"** — Koltiva sells enterprise silos; the farmer is a
-   data row. We sell per-shipment and the farmer keeps the credential. A structural wedge, not a
-   feature war — copying it breaks their pricing.
-5. **"EUDR delays again?"** — The same passport serves Fairtrade's Jan-2027 geodata mandate,
-   e-STDB registration, ISPO, and buyer programs. The wall has many bricks; we sell the door.
+   either alone yields a verdict. If venue Wi-Fi dies, offline-first *is* the contingency.
+4. **"Koltiva has 1.9M farmers. Why you?"** — Koltiva's own number: only ~1% of smallholders
+   meet EUDR requirements — the enterprise model skips the long tail by design. We sell to
+   cooperatives and mid-tier exporters at a price below a Koltiva onboarding call, and the
+   farmer keeps the credential. Copying that breaks their custody-and-pricing model.
+5. **"EUDR delays again?"** — The 2024 delay itself triggered +72% buyer front-loading: buyers,
+   not Brussels, now enforce the deadline. And the same passport serves Fairtrade Jan-2027,
+   e-STDB, and ISPO. The wall has many bricks; we sell the door.
+6. **"Standard risk = only 3% get checked. Is the pain real?"** — 3% is the *ex-post audit*
+   rate. A valid DDS reference is a customs precondition for **100% of shipments**, and buyers
+   facing 4%-of-turnover fines push the data burden upstream regardless. Exclusion, not
+   discounts: mixing contaminates the lot.
+7. **"Aren't you just a UI on free Whisp?"** — Whisp answers one question for someone who
+   already holds a correct polygon. Everything upstream (offline capture, identity,
+   attestation) and downstream (portable credentials, 5-year verifiability, TRACES dossiers)
+   is the product. An intern's spreadsheet is redone every season; a passport verifies once and
+   is reused — the attested registry compounds.
+8. **"Farmer data privacy — GDPR? Indonesia's PDP Law?"** — Consent at enrollment; the
+   cooperative is data controller, we are processor (UU 27/2022 + GDPR framing); coordinates
+   sit under row-level security and are disclosed only inside the exporter's DDS; the chain
+   holds salted hashes, so destroying a salt is a clean erasure path; the public QR shows a
+   verdict, never coordinates or names.
+9. **"If TandaTani is dead in 3 years, what does the farmer hold?"** — A self-contained signed
+   file on their device and a printed QR card; verification needs only the credential, an
+   open-source static verifier, and the public chain. Validity *and* availability survive us.
