@@ -99,3 +99,15 @@ verifiable-credentials, did, gemini, fao-whisp, global-forest-watch, vercel, tai
 > Phase 1 requires no video and no images on Devpost ("You are not required to fill it out").
 > If you have 2 spare hours, a 60–90s video (script in `pitch-video-script.md`) strengthens the
 > Public Favorite vote later — Top 30 project pages are shown publicly Oct 1–10.
+
+---
+
+## 6. Twibbon caption (Instagram — every member posts)
+
+```
+Proud to compete in HACKSPHERE 2026 @compsphere with Team ROOT ACCESS! 🌱⛓️
+We're building TandaTani — the farmer's signature, verified from space: a free, farmer-owned
+Plot Passport so Indonesia's smallholders stay in the EU market after the deforestation law
+bites on Dec 30, 2026.
+#Compsphere #Hacksphere2026 #Web3 #ConnectTheIdeasCreateTheFuture
+```
