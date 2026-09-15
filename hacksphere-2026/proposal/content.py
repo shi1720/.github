@@ -81,8 +81,8 @@ SEC1 = [
       "**EU-ready due-diligence dossier** (TRACES GeoJSON){r:traces} — and **anyone, including "
       "the judges reading this, can scan a QR and verify the entire chain of proof with no "
       "account, no permission, and no trust in us.**", after=110),
-    P("Farmers pay nothing; exporters pay per shipment — two orders of magnitude below today’s "
-      "€800-per-day consultants{r:consult} — for compliance that carries a documented "
+    P("Farmers pay nothing; exporters pay per shipment — less than 6% of a single consultant-day at today’s "
+      "€800–1,500 rates{r:consult} — for compliance that carries a documented "
       "**+US$50/tonne premium** (Vietnamese-robusta benchmark).{r:premium} Hybrid Web2 + Web3 + "
       "AI, every component free-tier, and every feature scoped to run **live, end-to-end, "
       "within the 24-hour final**.", after=160),
@@ -105,13 +105,14 @@ SEC2 = [
       "been consumed, and the simplifications that came with the delay did not remove the "
       "plot-level data requirement. Non-compliance risks fines whose ceiling is no lower than **4% of a company’s EU-wide "
       "turnover**, plus confiscation and exclusion from public procurement.{r:eudr} Indonesia is "
-      "benchmarked **“standard risk”** — meaning real checks on 3% of operators, not a "
-      "waiver.{r:benchmark}", after=100),
+      "benchmarked **“standard risk”** — 3% of operators face ex-post audits, but a valid DDS "
+      "reference is a customs precondition for *every* shipment, and buyers facing the fines "
+      "push the data burden upstream regardless.{r:benchmark}", after=100),
 
     SUBHEAD("2.2  The people on the wrong side of the wall"),
     STATBAND([
-        ("99.3%", "of Indonesian coffee is grown by smallholders on 0.5–2 ha plots{r:cips,fftc}"),
-        ("0.03%", "of coffee farmers hold e-STDB — the registration that doubles as their geolocation record{r:estdb}"),
+        ("99.3%", "of Indonesian coffee production comes from smallholders on 0.5–2 ha plots{r:cips,fftc}"),
+        ("0.03%", "of coffee farmers hold e-STDB — the registration that doubles as their geolocation record (MoA, 2024){r:estdb}"),
         ("US$7 B", "of Indonesian exports exposed to EUDR requirements (CMEA estimate){r:pwc7b}"),
     ]),
     P("Indonesia is the world’s 4th-largest coffee producer (813,345 t in 2024){r:bps_coffee}, "
@@ -122,7 +123,7 @@ SEC2 = [
       "natural rubber**.{r:rubber} Yet the state instrument that would prove their plots’ "
       "location and legality — the e-STDB cultivation registration — has reached **1.07% of palm "
       "farmers, 0.03% of rubber and coffee farmers, and 0.00% of cocoa farmers** (Ministry of "
-      "Agriculture data).{r:estdb} By December 2023 exactly **15,054** e-STDB certificates "
+      "Agriculture data, July 2024 — the latest published breakdown).{r:estdb} By December 2023 exactly **15,054** e-STDB certificates "
       "existed against ≈2.4 million oil-palm households alone.{r:terpercaya} Koltiva — the "
       "largest traceability provider in the country — itself estimates that **only ≈1% of "
       "Indonesian smallholders meet EUDR traceability and legality requirements**.{r:koltiva_gap}", after=100),
@@ -152,7 +153,7 @@ SEC2 = [
         "side bluntly — asked whether smallholders can perform EUDR’s screening duties: **“Can "
         "farmers do it? Of course not.”**{r:havas}",
         "**The digital divide is real but navigable.** Only **46.8%** of Indonesia’s 28.2 M "
-        "farmers use any digital technology;{r:bps_census} any workable solution must run "
+        "farmers use modern machinery or digital technology;{r:bps_census} any workable solution must run "
         "offline, in Bahasa, on cheap Android phones — or through a literate cooperative officer.",
         "**Chain-of-custody fraud.** Collection points mix compliant and non-compliant lots; "
         "without tamper-evident records, one launderer can contaminate — legally and reputationally "
@@ -235,7 +236,9 @@ SEC3 = [
         "they will never meet, passed through 3–5 intermediaries — some of whom profit from "
         "laundering non-compliant volume into compliant lots.{r:mongabay25} A vendor’s private "
         "database asks the importer to trust the vendor and every editor; a public anchor makes "
-        "tampering *detectable by anyone*.",
+        "tampering *detectable by anyone* — a signature proves *who* wrote a record, the "
+        "anchor proves *when*, so no issuer can quietly backdate a passport after a "
+        "deforestation alert lands.",
         "**Records must outlive companies.** EUDR requires operators to keep due-diligence "
         "records for **five years**.{r:eudr} Startups die; anchored hashes on a public chain do "
         "not.",
@@ -277,7 +280,7 @@ SEC3 = [
              "Unit economics that can never reach a 2-ha farm"],
             ["Free public tools — Whisp, GFW, TRACES, Fairtrade Plot Insights{r:whisp,fairtrade}",
              "Free",
-             "Analysis and filing exist — identity, credentials, chain of custody, offline Bahasa UX do not"],
+             "Analysis and filing exist — identity, attestations, volume-bounded dossiers, offline Bahasa capture and portable credentials do not"],
         ],
         [2760, 2500, 3049], size=18,
     ),
@@ -301,8 +304,9 @@ SEC4 = [
 
     SUBHEAD("Feature 1 — Ladang: offline-first plot capture (Bahasa)"),
     P("A PWA for low-end Android. One-tap GPS point for plots ≤ 4 ha (per the EU geolocation "
-      "spec;{r:traces} smartphone GPS is accurate to ≤ 4.9 m in open sky{r:gps}) or "
-      "walk-the-boundary polygon capture above 4 ha, over Esri satellite imagery (MapLibre GL). "
+      "spec;{r:traces} smartphone GPS reaches ≤ 4.9 m in open sky{r:gps}, and under shade "
+      "canopy Ladang shows live accuracy, accepting a point only below a 10 m threshold with "
+      "tap-on-imagery fallback) or walk-the-boundary polygon capture above 4 ha, over Esri satellite imagery (MapLibre GL). "
       "Farmer profile, plot photos, harvest estimate. Captures queue in IndexedDB and sync when "
       "signal returns — demonstrated live in airplane mode.", after=80),
 
@@ -332,8 +336,10 @@ SEC4 = [
     SUBHEAD("Feature 5 — Exporter DDS Studio"),
     P("Wallet sign-in (SIWE); pick verified passports into a batch; export a due-diligence "
       "dossier — **TRACES-conformant GeoJSON** (WGS-84, six-decimal precision, point-or-polygon "
-      "by plot size{r:traces}) plus a QR-stamped evidence-summary PDF. An append-only audit log "
-      "shows every state change behind the dossier.", after=100),
+      "by plot size{r:traces}) plus a QR-stamped evidence-summary PDF. A **volume-plausibility "
+      "gate** blocks any dossier whose tonnage exceeds the summed harvest estimates of its "
+      "passports — the launderer’s math stops working — and an append-only audit log shows "
+      "every state change behind it.", after=100),
 
     SUBHEAD("The 24-hour execution plan (3 builders × 24 h)"),
     TABLE(
@@ -354,7 +360,10 @@ SEC4 = [
       "slowly; Groq/Llama behind the same interface if Gemini rate-limits; a cached verification "
       "fixture exists *only* as an offline-resilience aid and would be labeled as such on screen, "
       "never presented as live output. **Cut-not-fake rule: if a feature slips, we cut it — we "
-      "never simulate it.**", after=80),
+      "never simulate it.** Declared cut order if time slips: the Tanya Tani copilot goes first, "
+      "the PDF dossier second (the TRACES GeoJSON remains), Exporter Studio polish third — the "
+      "capture → verify → issue → publicly-verify loop (Features 1–4) is the non-negotiable "
+      "demo core.", after=80),
     P("**Deliberately out of the 24-hour scope** — native mobile builds, payments, marketplace, "
       "mainnet deployment, SD-JWT selective disclosure, voice interface. They appear in §5 as "
       "roadmap and are promised nowhere as demo.", after=100),
@@ -366,7 +375,7 @@ SEC5 = [
     BULLETS([
         "**Primary — cooperative field officers and managers** in Indonesia’s Arabica belt: "
         "specifically the Gayo highlands (Aceh Tengah, Bener Meriah, Gayo Lues), home to "
-        "Southeast Asia’s largest Arabica area, an EU Geographical Indication since 2010, and "
+        "Southeast Asia’s largest Arabica area, a protected Geographical Indication origin since 2010, and "
         "cooperatives like women-led **Kopepi Ketiara (2,000+ members across 19 villages)** — "
         "which face a **January 2027** Fairtrade geolocation deadline on top of "
         "EUDR.{r:ketiara,fairtrade} These are digitally literate professionals mapping member "
@@ -378,6 +387,11 @@ SEC5 = [
         "**Secondary (year 1–2)** — cocoa and rubber cooperatives (0.00% and 0.03% e-STDB "
         "coverage{r:estdb}), then independent palm smallholder associations; **EU importers** "
         "who verify passports (free) and later pay for API access.",
+        "**Validation, honestly stated:** we have not yet interviewed a customer. Between this "
+        "submission and the final we will hold structured calls with Gayo cooperative officers "
+        "(intro path: the WRI Sustainable Gayo Coffee network and Fairtrade producer support) "
+        "to test willingness-to-pay — and we will report what we hear, including bad news, on "
+        "stage.",
     ]),
 
     SUBHEAD("5.2  Market size, from the bottom up"),
@@ -406,13 +420,14 @@ SEC5 = [
         "+US$50/tonne.{r:premium} We price under 5% of the value we unlock.",
         "**Cooperatives: Rp 25k (≈ €1.40) per member per season** for the credential registry "
         "and Fairtrade/e-STDB exports — less than 1% of a certification’s per-farmer "
-        "cost.{r:rspo_cost}",
+        "cost;{r:rspo_cost} a member visit takes minutes, and one visit now serves EUDR, "
+        "Fairtrade and e-STDB at once.",
         "**Later: verification API** for EU importers and (per Ditjenbun’s invitation to third "
         "parties{r:tempo_stdb}) **paid e-STDB data-collection partnerships** feeding the "
         "National Dashboard.{r:dashboard}",
     ]),
-    P("**Unit economics.** Marginal cost per verified plot ≈ $0.002 LLM + $0.00001 anchoring + "
-      "fractions of a cent of storage{r:polygon_gas,gemini} — under **$0.01 all-in** against "
+    P("**Unit economics.** Marginal cost per verified plot ≈ $0.002 LLM + anchoring amortized to ≈$0.000001 in "
+      "1,000-plot batches + fractions of a cent of storage{r:polygon_gas,gemini} — under **$0.01 all-in** against "
       "€45-per-dossier revenue: software margins on infrastructure that incumbents deliver with "
       "field armies. Free tiers carry the pilot; the first paying exporter carries the "
       "company.", after=80),
@@ -445,14 +460,14 @@ SEC5 = [
     TABLE(
         [
             ["Risk", "Reality check", "Mitigation built into the design"],
-            ["Farmer digital literacy (46.8% digital adoption{r:bps_census})",
+            ["Farmer digital literacy (46.8% modern-tech adoption{r:bps_census})",
              "Real, generational", "Cooperative-officer-assisted capture; offline PWA; Bahasa-first; voice roadmap"],
             ["EUDR slips a third time", "Possible — it slipped twice{r:eudr_delay}",
-             "Passports also serve Fairtrade Jan-2027, e-STDB, ISPO and buyer programs — the wall has many bricks{r:fairtrade,tempo_stdb}"],
+             "The 2024 delay itself triggered +72% buyer front-loading — buyers, not Brussels, now enforce;{r:usda} passports also serve Fairtrade Jan-2027, e-STDB and ISPO{r:fairtrade,tempo_stdb}"],
             ["GPS spoofing / claim fraud", "Attempted everywhere",
              "Satellite cross-check, PostGIS overlap detection, geotagged photos, cooperative attestation — convergence, not trust"],
             ["Cooperative key loss", "Operational hazard",
-             "Key rotation + re-issuance; credential status registry; custody handbook (roadmap: social recovery)"],
+             "Credential-status registry + re-issuance under a successor DID (did:key is single-keypair by design; roadmap: did:web for true rotation)"],
             ["Incumbent copies the model", "Koltiva has 1.9 M producers{r:koltiva}",
              "Copying farmer-owned portability breaks their enterprise custody model — our wedge is their conflict"],
         ],
@@ -510,6 +525,12 @@ SEC6 = [
         "defeats rainbow-matching of known plots.",
         "**Keys:** cooperatives hold did:key signing keys; exporters authenticate by wallet "
         "(SIWE); a relayer pays gas so farmers never see crypto.",
+        "**Privacy law, named.** Indonesia’s PDP Law (UU 27/2022) and the GDPR shape the "
+        "design: consent captured at enrollment (the cooperative as data controller, TandaTani "
+        "as processor), coordinates under row-level security and disclosed only inside the "
+        "DDS, credential copies on the farmer’s device and printable QR card — and, because "
+        "the chain holds only salted hashes, destroying a record’s salt is a clean erasure "
+        "path. The public QR page shows a verdict, never coordinates or identities.",
     ]),
 
     SUBHEAD("6.4  Engineering honesty — failure modes we designed for"),
@@ -518,8 +539,8 @@ SEC6 = [
         "as an independent evidence track — either alone yields a verdict.{r:whisp,gfw}",
         "Background Sync API is Chromium-only, so the offline queue flushes on the browser’s "
         "online event — works everywhere modern; demoed on Android Chrome.",
-        "Free-tier LLM limits (Gemini: 250 requests/day{r:gemini}) exceed demo load ≈50×; Groq "
-        "is wired behind the same interface.",
+        "Free-tier LLM limits (Gemini: 250 requests/day{r:gemini}) comfortably exceed "
+        "rehearsal-measured demo load; Groq is wired behind the same interface.",
         "If venue Wi-Fi dies mid-pitch, the offline-first design *is* the contingency: capture "
         "continues, and we sync over any hotspot.",
     ]),
