@@ -31,7 +31,7 @@ hacksphere-2026/
 │   ├── build.py                         ← runner: python3 build.py → rebuilds the .docx
 │   ├── diagram_arch.html                ← architecture diagram source (SVG)
 │   └── render_diagram.js                ← renders the diagram to PNG via Chromium
-├── research/                            ← four sourced dossiers (≈240 cited URLs)
+├── research/                            ← three sourced dossiers (≈240 cited URLs)
 │   ├── research_indonesia.md            ← smallholder/commodity/EUDR-gap data
 │   ├── research_competitors.md          ← Koltiva, Dimitra, Fairfood… + differentiation
 │   └── research_tech.md                 ← every stack claim verified (free tiers, APIs, gas)
